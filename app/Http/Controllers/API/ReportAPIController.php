@@ -62,7 +62,7 @@ class ReportAPIController extends Controller
 
         $data = DB::table('reports')
         ->join('assets', 'reports.asset_id', '=', 'assets.id')
-        ->select('reports.periode', DB::raw('SUM(reports.revenue_usd) as usd'))
+        ->select('reports.periode', DB::raw('SUM(reports.share) as share'))
         ->where('assets.user_id' , $user_id)
         ->groupBy('reports.periode')
         ->orderBy(DB::raw("FIELD(periode, 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL','MAY', 'JUNI',

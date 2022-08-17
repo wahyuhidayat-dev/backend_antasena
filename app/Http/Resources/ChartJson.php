@@ -17,7 +17,7 @@ class ChartJson extends JsonResource
         //
         return [
             'periode' => $this->periode,
-            'usd' => $this->usd,
+            'share' => $this->share,
         ];
     }
 }
