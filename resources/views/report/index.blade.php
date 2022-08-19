@@ -71,44 +71,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {{-- @forelse($report as $item)
                         
-                            <tr>
-                                <td class="border px-6 py-4">{{ $item->id}}</td>
-                                <td class="border px-6 py-4 ">{{ $item->asset_id }}</td>
-                                <td class="border px-6 py-4">{{ $item->periode }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->revenue_usd) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->rate_idr) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->revenue_idr) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->label_revenue) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->get_ugc) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->marketing) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->share_revenue) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->tax) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->final_revenue) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->share) }}</td>
-                                <td class="border px-6 py-4">{{  number_format($item->ads) }}</td>
-
-                                <td class="border px-6 py- text-center">
-                                    <a href="{{ route('report.edit', $item->id) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
-                                        Edit
-                                    </a>
-                                    <form action="{{ route('report.destroy', $item->id) }}" method="POST" class="inline-block">
-                                        {!! method_field('delete') . csrf_field() !!}
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 rounded inline-block">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                               <td colspan="15" class="border text-center p-5">
-                                   Data Tidak Ditemukan
-                               </td>
-                            </tr>
-                           
-                        @endforelse --}}
                     </tbody>
                 </table>
             </div>
