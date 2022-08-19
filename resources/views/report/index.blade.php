@@ -5,36 +5,73 @@
         </h2>
     </x-slot>
 
+    <x-slot name="script">
+        <script>
+            // AJAX DataTable
+            var datatable = $('#crudTable').DataTable({
+                ajax: {
+                    url: '{!! url()->current() !!}',
+                },
+                
+                columns: [
+                    { data: 'id', name: 'id', width: '5%'},
+                    { data: 'asset_id', name: 'asset_id' },
+                    { data: 'periode', name: 'periode' },
+                    { data: 'revenue_usd', name: 'revenue_usd' },
+                    { data: 'rate_idr', name: 'rate_idr' },
+                    { data: 'revenue_idr', name: 'revenue_idr' },
+                    { data: 'label_revenue', name: 'label_revenue' },
+                    { data: 'get_ugc', name: 'get_ugc' },
+                    // { data: 'marketing', name: 'marketing' },
+                    { data: 'share_revenue', name: 'share_revenue' },
+                    { data: 'tax', name: 'tax' },
+                    { data: 'final_revenue', name: 'final_revenue' },
+                    { data: 'share', name: 'share' },
+                    { data: 'ads', name: 'ads' },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        width: '25%'
+                    },
+                ],
+            });
+        </script>
+    </x-slot>
+
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8"> 
+        {{-- mx-auto sm:px-6 lg:px-8"> --}}
             <div class="mb-10">
                 <a href="{{ route('report.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     + Create Report
                 </a>
             </div>
-            <div class="bg-white">
-                <table class="table-auto w-full">
+            <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 bg-white sm:p-6">
+                    <table id="crudTable">
                     <thead>
                     <tr>
-                        <th class="border px-6 py-4">NO</th>
-                        <th class="border px-6 py-4">ASSET ID</th>
-                        <th class="border px-6 py-4">PERIODE</th>
-                        <th class="border px-6 py-4">REVENUE USD</th>
-                        <th class="border px-6 py-4">RATE IDR</th>
-                        <th class="border px-6 py-4">REVENUE IDR</th>
-                        <th class="border px-6 py-4">LABEL REVENUE</th>
-                        <th class="border px-6 py-4">GET UGC</th>
-                        <th class="border px-6 py-4">MARKETING</th>
-                        <th class="border px-6 py-4">SHARE REVENUE</th>
-                        <th class="border px-6 py-4">TAX</th>
-                        <th class="border px-6 py-4">FINAL REVENUE</th>
-                        <th class="border px-6 py-4">SHARE</th>
-                        <th class="border px-6 py-4">ADS</th>
-                        <th class="border px-6 py-4">ACTION</th>
+                        <th>NO</th>
+                        <th>ASSET ID</th>
+                        <th>PERIODE</th>
+                        <th>REVENUE USD</th>
+                        <th>RATE IDR</th>
+                        <th>REVENUE IDR</th>
+                        <th>LABEL REVENUE</th>
+                        <th>GET UGC</th>
+                        {{-- <th>MARKETING</th> --}}
+                        <th>SHARE REVENUE</th>
+                        <th>TAX</th>
+                        <th>FINAL REVENUE</th>
+                        <th>SHARE</th>
+                        <th>ADS</th>
+                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @forelse($report as $item)
+                        {{-- @forelse($report as $item)
                         
                             <tr>
                                 <td class="border px-6 py-4">{{ $item->id}}</td>
@@ -71,13 +108,14 @@
                                </td>
                             </tr>
                            
-                        @endforelse
+                        @endforelse --}}
                     </tbody>
                 </table>
             </div>
-            <div class="text-center mt-5">
+        </div>
+            {{-- <div class="text-center mt-5">
                 {{ $report->links() }}
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-app-layout>

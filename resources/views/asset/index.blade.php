@@ -5,6 +5,31 @@
         </h2>
     </x-slot>
 
+    <x-slot name="script">
+        <script>
+            // AJAX DataTable
+            var datatable = $('#crudTable').DataTable({
+                ajax: {
+                    url: '{!! url()->current() !!}',
+                },
+                columns: [
+                    { data: 'id', name: 'id', width: '5%'},
+                    { data: 'user_id', name: 'user_id' },
+                    { data: 'url_video', name: 'url_video' },
+                    { data: 'video_name', name: 'video_name' },
+                    { data: 'channel_name', name: 'channel_name' },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        width: '25%'
+                    },
+                ],
+            });
+        </script>
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-10">
@@ -12,20 +37,21 @@
                     + Create Asset
                 </a>
             </div>
-            <div class="bg-white">
-                <table class="table-auto w-full">
+            <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 bg-white sm:p-6">
+                    <table id="crudTable">
                     <thead>
                     <tr>
-                        <th class="border px-6 py-4">ID</th>
-                        <th class="border px-6 py-4">USER ID</th>
-                        <th class="border px-6 py-4">URL VIDEO</th>
-                        <th class="border px-6 py-4">VIDEO NAME</th>
-                        <th class="border px-6 py-4">CHANNEL NAME</th>
-                        <th class="border px-6 py-4">ACTION</th>
+                        <th>ID</th>
+                        <th>USER ID</th>
+                        <th>URL VIDEO</th>
+                        <th>VIDEO NAME</th>
+                        <th>CHANNEL NAME</th>
+                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @forelse($asset as $item)
+                        {{-- @forelse($asset as $item)
                             <tr>
                                 <td class="border px-6 py-4">{{ $item->id }}</td>
                                 <td class="border px-6 py-4 ">{{ $item->user_id }}</td>
@@ -50,13 +76,14 @@
                                    Data Tidak Ditemukan
                                </td>
                             </tr>
-                        @endforelse
+                        @endforelse --}}
                     </tbody>
                 </table>
             </div>
-            <div class="text-center mt-5">
+        </div>
+            {{-- <div class="text-center mt-5">
                 {{ $asset->links() }}
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-app-layout>
