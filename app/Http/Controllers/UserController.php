@@ -84,16 +84,16 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules()
         ]);
-        $data = $request->all();
-        // $data = [
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //      'address' => $request->address,
-        //      'houseNumber' => $request->houseNumber,
-        //      'phoneNumber' => $request->phoneNumber,
-        //      'city' => $request->city,
-        //     'password' => Hash::make($request->password),
-        // ];
+       // $data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            //  'address' => $request->address,
+            //  'houseNumber' => $request->houseNumber,
+            //  'phoneNumber' => $request->phoneNumber,
+            //  'city' => $request->city,
+            'password' => Hash::make($request->password),
+        ];
 
         // User::where('email', $request->email)->first();
 
