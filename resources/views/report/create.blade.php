@@ -36,7 +36,7 @@
                                 <option>Choose Video name</option>
                                 @foreach ($asset as $item)
                                 <option class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                 value="{{ $item->id }}">{{ $item->video_name }}</option>
+                                 value="{{ $item->id }}">{{$item->url_video}}--{{ $item->video_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -54,7 +54,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                REVENUE USD
                             </label>
-                            <input value="{{ old('revenue_usd') }}" name="revenue_usd" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="REVENUE USD">
+                            <input value="{{ old('revenue_usd') ?? 0}}" name="revenue_usd" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="REVENUE USD">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -62,7 +62,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                RATE IDR
                             </label>
-                            <input value="{{ old('rate_idr') }}" name="rate_idr" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="RATE IDR">
+                            <input value="{{ old('rate_idr') ?? 0 }}" name="rate_idr" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="RATE IDR">
                         </div>
                     {{-- </div>
                     <div class="flex flex-wrap -mx-3 mb-6"> --}}
@@ -70,7 +70,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                REVENUE IDR
                             </label>
-                            <input value="{{ old('revenue_idr') }}" name="revenue_idr" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="REVENUE IDR">
+                            <input value="{{ old('revenue_idr') ?? 0}}" name="revenue_idr" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="REVENUE IDR">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -78,7 +78,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                LABEL REVENUE
                             </label>
-                            <input value="{{ old('label_revenue') }}" name="label_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="LABEL REVENUE">
+                            <input value="{{ old('label_revenue') ?? 0}}" name="label_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="LABEL REVENUE">
                         </div>
                     {{-- </div>
                     <div class="flex flex-wrap -mx-3 mb-6"> --}}
@@ -86,7 +86,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                GET UGC
                             </label>
-                            <input value="{{ old('get_ugc') }}" name="get_ugc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="GET UGC">
+                            <input value="{{ old('get_ugc')?? 0 }}" name="get_ugc" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="GET UGC">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -94,7 +94,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                MARKETING
                             </label>
-                            <input value="{{ old('marketing') }}" name="marketing" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="MARKETING">
+                            <input value="{{ old('marketing')?? 0 }}" name="marketing" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="MARKETING">
                         </div>
                     {{-- </div>
                     <div class="flex flex-wrap -mx-3 mb-6"> --}}
@@ -102,7 +102,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                SHARE REVENUE
                             </label>
-                            <input value="{{ old('share_revenue') }}" name="share_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="SHARE REVENUE">
+                            <input value="{{ old('share_revenue')?? 0 }}" name="share_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="SHARE REVENUE">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -110,7 +110,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                TAX
                             </label>
-                            <input value="{{ old('tax') }}" name="tax" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="TAX">
+                            <input value="{{ old('tax')?? 0 }}" name="tax" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="TAX">
                         </div>
                     {{-- </div>
                     <div class="flex flex-wrap -mx-3 mb-6"> --}}
@@ -118,7 +118,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                FINAL REVENUE
                             </label>
-                            <input value="{{ old('final_revenue') }}" name="final_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="FINAL REVENUE">
+                            <input value="{{ old('final_revenue')?? 0 }}" name="final_revenue" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="FINAL REVENUE">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -126,7 +126,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                SHARE
                             </label>
-                            <input value="{{ old('share') }}" name="share" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="SHARE">
+                            <input value="{{ old('share')?? 0 }}" name="share" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="SHARE">
                         </div>
                     {{-- </div>
                     <div class="flex flex-wrap -mx-3 mb-6"> --}}
@@ -134,7 +134,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                ADS
                             </label>
-                            <input value="{{ old('ads') }}" name="ads" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="ADS">
+                            <input value="{{ old('ads')?? 0 }}" name="ads" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="ADS">
                         </div>
                     </div>
                     {{-- <div class="flex flex-wrap -mx-3 mb-6">

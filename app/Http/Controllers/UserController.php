@@ -6,9 +6,14 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
+use App\Actions\Fortify\PasswordValidationRules;
 
 class UserController extends Controller
+
+
 {
+    use PasswordValidationRules;
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +79,23 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules()
+        ]);
         $data = $request->all();
+        // $data = [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //      'address' => $request->address,
+        //      'houseNumber' => $request->houseNumber,
+        //      'phoneNumber' => $request->phoneNumber,
+        //      'city' => $request->city,
+        //     'password' => Hash::make($request->password),
+        // ];
+
+        // User::where('email', $request->email)->first();
 
        // $data['picturePath'] = $request->file('picturePath')->store('assets/user', 'public');
 
@@ -117,7 +138,12 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         try {
-        $data = $request->all();
+        //$data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ];
 
         // if($request->file('picturePath'))
         // {

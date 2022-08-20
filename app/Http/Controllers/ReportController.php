@@ -7,6 +7,7 @@ use App\Http\Requests\ReportRequest;
 use App\Models\Report;
 use App\Models\Asset;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -36,7 +37,7 @@ class ReportController extends Controller
                         </form>';
                 })
                 ->editColumn('revenue_usd', function ($item) {
-                    return number_format($item->revenue_usd);
+                    return number_format($item->revenue_usd,2);
                 })
                 ->editColumn('rate_idr', function ($item) {
                     return number_format($item->rate_idr);
@@ -106,8 +107,16 @@ class ReportController extends Controller
 
     public function edit(Report $report)
     {
+        //$asset = Asset::all();
+        $data = DB::table('reports')
+        ->join('assets', 'reports.asset_id', '=', 'assets.id')
+        ->select('reports.*', 'assets.url_video')
+        ->where(DB::raw('assets.deleted_at IS NULL'))
+        ->get();
+       // print_r($data);
         return view('report.edit',[
-            'item' => $report
+            'item' => $report,
+           // 'data'=> $data
         ]);
     }
 
